@@ -463,7 +463,10 @@ document.getElementById('adminLoginBtn').addEventListener('click', function () {
     { id: '0608', password: '2007' }
   ];
 
-  const found = admins.find(admin => admin.id === id && admin.password === password);
+  const found = admins.find(admin =>
+  admin.id.trim().toLowerCase() === id.toLowerCase() &&
+  admin.password === password
+);
   if (found) {
     localStorage.setItem('isAuthenticated', 'true');
     localStorage.setItem('currentAdmin', id);
